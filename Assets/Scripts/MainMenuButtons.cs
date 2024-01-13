@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 public class MainMenuButtons : MonoBehaviour
 {
     private Button button;
-    public GameObject instructionsImage;
+    //public GameObject instructionsImage;
     private ScoreCounter scoreCounterScript;
 
     [SerializeField] GameObject counter = null;
@@ -51,14 +51,14 @@ public class MainMenuButtons : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Time.timeScale = 1;
         }
-        else if (CompareTag("InstructionsButton"))
+        /*else if (CompareTag("InstructionsButton"))
         {
             instructionsImage.SetActive(true);
         }
         else if (CompareTag("ExitButton"))
         {
             instructionsImage.SetActive(false);
-        }
+        }*/
         else if (CompareTag("OptionsButton"))
         {
             //TODO: open options

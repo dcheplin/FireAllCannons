@@ -4,26 +4,27 @@ using UnityEngine;
 
 public class DeckMover : MonoBehaviour
 {
-    public float speed = 5;
-    public float lowerBordeer = -3;
-    public float topBorder = 15;
+    private float speed = 5;
+    private float lowerBorder = -3;
+    private float topBorder = 15;
 
+    private float xPos;
+    private float yPos;
+    private float zPos;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        xPos = transform.position.x;
+        zPos = transform.position.z;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = new Vector3(transform.position.x, (transform.position.y + Time.deltaTime * speed), transform.position.z);
+        yPos = transform.position.y + Time.deltaTime * speed;
 
-        if (transform.position.y >= topBorder || transform.position.y <= lowerBordeer)
-        {
+        transform.position = new Vector3(xPos, yPos, zPos);
+
+        if (yPos >= topBorder || yPos <= lowerBorder)
             speed *= -1;
-        }
-
     }
 }

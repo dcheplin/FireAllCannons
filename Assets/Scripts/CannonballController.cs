@@ -2,21 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonBallTrajectory : MonoBehaviour
+public class CannonballController : MonoBehaviour
 {
-    private GameObject cannon;
-    private Rigidbody cannonBallRb;
+    [SerializeField] GameObject cannon;
+    private Rigidbody cannonballRb;
     private AudioSource knockSE;
 
-    // Start is called before the first frame update
     void Start()
     {
-        cannon = GameObject.Find("cannon");
         PlayerController controller = cannon.GetComponent<PlayerController>();
         knockSE = GetComponent<AudioSource>();
 
-        cannonBallRb = GetComponent<Rigidbody>();
-        cannonBallRb.AddRelativeForce(controller.cannonForce * cannon.transform.forward, ForceMode.Impulse);
+        cannonballRb = GetComponent<Rigidbody>();
+        cannonballRb.AddRelativeForce(controller.cannonForce * cannon.transform.forward, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

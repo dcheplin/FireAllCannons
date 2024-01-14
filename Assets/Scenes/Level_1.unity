@@ -174,10 +174,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!114 &63599758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,10 +1206,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!1001 &403568144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2192,10 +2200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!1001 &796954253
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3207,10 +3219,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!114 &1524099877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3636,10 +3652,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!1 &1771089534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,10 +3890,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!1001 &1856262999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4160,7 +4184,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2112418908}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1291389881}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OpenNewLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2112418908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4270,10 +4306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!1 &2119496235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4553,10 +4593,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735c74b19d6b6644d818d6efcf85077a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionsImage: {fileID: 1168002303}
+  button: {fileID: 0}
+  scoreCounterScript: {fileID: 0}
   counter: {fileID: 616966862}
+  counterScript: {fileID: 0}
   star: {fileID: 821487278}
+  starGatheringScript: {fileID: 0}
   player: {fileID: 392570829}
+  playerController: {fileID: 0}
 --- !u!114 &2141422649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4697,7 +4741,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2141422649}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2141422646}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &3109976143790298485
 PrefabInstance:
   m_ObjectHideFlags: 0

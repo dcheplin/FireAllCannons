@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
         gameManagerScript = gameManager.GetComponent<GameManager>();
         fireSE = GetComponent<AudioSource>();
+
+        charges = gameManagerScript.GetAmountOfCharges();
         chargesText.text = "Charges: " + charges;
 
         counterScript = counter.GetComponent<Counter>();
@@ -96,39 +98,10 @@ public class PlayerController : MonoBehaviour
             Invoke("ShowNextLevelButton", 1.5f);
         }
 
-        //Open main menu
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (Time.timeScale == 0)
-            {
-                gameManagerScript.ActivateUI("MainMenu", false);
-                Time.timeScale = 1;
-            }
-            else
-            {
-                gameManagerScript.ActivateUI("MainMenu", true);
-                Time.timeScale = 0;
-            }
-        }
+
     }
 
-    void ShowRestartButton()
-    {
-        if (counterScript.count < counterScript.levelGoal && charges == 0)
-        {
-            gameManagerScript.ActivateUI("RestartButton", true);
-        }
-    }
 
-    void ShowNextLevelButton()
-    {
-        if (counterScript.count >= counterScript.levelGoal)
-        {
-            //If goal reached, let change lvl
-            gameManagerScript.ActivateUI("NextLevelButton", true);
-            gameManagerScript.ActivateUI("RestartButton", false);
-        }
-    }
 
     IEnumerator Fire()
     {

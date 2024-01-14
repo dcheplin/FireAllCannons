@@ -14,19 +14,9 @@ public class Counter : MonoBehaviour
 
     private void Start()
     {
+        //TODO: get current level goal from game manager (abstract class)
+        
         count = 0;
-    }
-
-    private void Update()
-    {
-        if (count >= levelGoal)
-        {
-            counterText.color = Color.green;
-        }
-        else
-        {
-            counterText.color = Color.white;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,5 +40,14 @@ public class Counter : MonoBehaviour
     public void UpdateText()
     {
         counterText.text = "Gather: " + count + " / " + levelGoal;
+
+        if (count >= levelGoal)
+        {
+            counterText.color = Color.green;
+        }
+        else
+        {
+            counterText.color = Color.white;
+        }
     }
 }

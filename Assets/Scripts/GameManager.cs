@@ -4,66 +4,62 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Button nextLevelButton;
-    [SerializeField] Button restartButton;
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject counter;
-    public TextMeshProUGUI scoreText;
+    public static GameManager Instance;
 
-    [SerializeField] GameObject player;
-    private PlayerController playerController;
-    private ScoreCounter scoreCounterScript;
-    private Counter counterScript;
+    // Key - level number, Value - charges for this level
+    //Dictionary<int, int> levelCharges = new Dictionary<int, int>();
+    List<int> levelCharges = new List<int>();
+
+    // Key - level number, Value - level goal (amount of successfull cannonballs)
+    //Dictionary<int, int> levelGoal = new Dictionary<int, int>();
+    List<int> levelGoal = new List<int>();
+
+
+    public int sessionScore = 0;
+    public int charges = 3;
+    public int goalCount = 0;
+    public int currentCount = 0;
+    public bool isVictory = false;
 
     void Awake()
     {
-        counterScript = counter.GetComponent<Counter>();
-        playerController = player.GetComponent<PlayerController>();
-        
-        SetLevelGoal(SceneManager.GetActiveScene().buildIndex);
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-        scoreCounterScript = GameObject.Find("ScoreCounter").GetComponent<ScoreCounter>();
-        //scoreCounterScript.AddScore(0, 0, 0);
+        SetLevelParameters();
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void ActivateUI(string objectName, bool value)
+    private void SetLevelParameters()
     {
-        if (objectName == "MainMenu")
-        {
-            mainMenu.SetActive(value);
-            scoreText.text = "Total score: " + scoreCounterScript.totalScore;
+        levelCharges.Add(0);
+        levelCharges.Add(3);
+        levelCharges.Add(4);
+        levelCharges.Add(5);
 
-        }
-        else if (objectName == "NextLevelButton")
-        {
-            nextLevelButton.gameObject.SetActive(value);
-        }
-        else if (objectName == "RestartButton")
-        {
-            restartButton.gameObject.SetActive(value);
-        }
+        levelGoal.Add(0);
+        levelGoal.Add(3);
+        levelGoal.Add(4);
+        levelGoal.Add(3);
     }
 
-    private void SetLevelGoal(int levelIndex)
+    public void SetChargesForLevel()
     {
-        if (levelIndex == 1)
-        {
-            counterScript.levelGoal = 3;
-            playerController.charges = 3;
-        }
-        else if (levelIndex == 2)
-        {
-            counterScript.levelGoal = 4;
-            playerController.charges = 4;
-        }
-        else if (levelIndex == 3)
-        {
-            counterScript.levelGoal = 3;
-            playerController.charges = 5;
-        }
-        counterScript.UpdateText();
+        charges = levelCharges[SceneManager.GetActiveScene().buildIndex];
+    }
+    public void SetGoalForLevel()
+    {
+        goalCount = levelGoal[SceneManager.GetActiveScene().buildIndex];
     }
 }
+
+
+

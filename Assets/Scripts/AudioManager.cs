@@ -1,18 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static AudioManager Instance;
+    
+    private Dictionary<string, AudioClip> audioSources = new Dictionary<string, AudioClip>();
+    [SerializeField] AudioClip fireSE;
+    [SerializeField] AudioClip chargingSE;
+    //[SerializeField] AudioClip starGatheringSE;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+
+        audioSources.Add("Fire", fireSE);
+        audioSources.Add("Charging", chargingSE);
     }
 
-    // Update is called once per frame
-    void Update()
+    public AudioClip GetSE(string nameOfClip)
     {
-        
+        return audioSources[nameOfClip];
     }
+
+
+
 }

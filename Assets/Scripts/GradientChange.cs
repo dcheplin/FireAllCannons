@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class GradientChange : MonoBehaviour
 {
-    [SerializeField] private Gradient gradient = null;
-    [SerializeField] private Image image = null;
+    [SerializeField] private Gradient gradient;
+    [SerializeField] private Image image;
     [SerializeField] private GameObject slider;
     private Slider sliderScript;
 

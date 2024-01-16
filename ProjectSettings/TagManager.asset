@@ -6,13 +6,8 @@ TagManager:
   tags:
   - Projectile
   - Deck
-  - StartButton
-  - InstructionsButton
-  - OptionsButton
-  - QuitButton
-  - ResetLevelButton
+  - UIHandler
   - NextLevelButton
-  - ExitButton
   layers:
   - Default
   - TransparentFX

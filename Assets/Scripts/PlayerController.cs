@@ -84,7 +84,8 @@ public class PlayerController : MonoBehaviour
         charges--;
         chargesText.text = "Charges: " + charges;
 
-        Invoke("CheckIfFailed", 5);
+        if (charges == 0)
+            Invoke("CheckIfFailed", 5);
 
         chargeSE.Stop(); 
         fireSE.Play();
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfFailed()
     {
-        if (!GameManager.Instance.isVictory && charges == 0)
+        if (!GameManager.Instance.isVictory)
             uiHandler.ShowRestartButton();
     }
 }

@@ -19,7 +19,8 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
+        Instance = this;
         DontDestroyOnLoad(gameObject);
 
         audioSources.Add("Fire", fireSE);

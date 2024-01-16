@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DeckMover : MonoBehaviour
@@ -8,12 +9,17 @@ public class DeckMover : MonoBehaviour
     private float lowerBorder = -3;
     private float topBorder = 15;
 
+    public float starOffset = 0;
+
     private float xPos;
     private float yPos;
     private float zPos;
 
     private void Awake()
     {
+        topBorder = topBorder + starOffset;
+        lowerBorder = lowerBorder + starOffset;
+
         xPos = transform.position.x;
         zPos = transform.position.z;
     }

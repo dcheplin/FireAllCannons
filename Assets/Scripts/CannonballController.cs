@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CannonballController : MonoBehaviour
 {
-    [SerializeField] GameObject cannon;
+    private GameObject cannon;
     private Rigidbody cannonballRb;
     private AudioSource knockSE;
 
     void Start()
     {
+        cannon = GameObject.FindGameObjectWithTag("Player");
         PlayerController controller = cannon.GetComponent<PlayerController>();
         knockSE = GetComponent<AudioSource>();
 

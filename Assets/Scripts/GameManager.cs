@@ -8,154 +8,58 @@ using System.Runtime.InteropServices;
 
 public class GameManager : MonoBehaviour
 {
-    public abstract class LevelParameters
-    {
-        // Key - level number, Value - amount of charges
-        private Dictionary<int, int> LevelCharges1 = new Dictionary<int, int>();
-        public Dictionary<int, int> LevelCharges { get; set; }
-        public Dictionary<int, int> LevelGoal { get; set; } = new Dictionary<int, int>();
+    public static GameManager Instance;
 
-        
+    // Key - level number, Value - charges for this level
+    //Dictionary<int, int> levelCharges = new Dictionary<int, int>();
+    List<int> levelCharges = new List<int>();
 
-        
+    // Key - level number, Value - level goal (amount of successfull cannonballs)
+    //Dictionary<int, int> levelGoal = new Dictionary<int, int>();
+    List<int> levelGoal = new List<int>();
 
-        // Key - level number, Value - level goal (amount of successfull cannonballs)
-        private Dictionary<int, int> LevelGoal1 = new Dictionary<int, int>();
-    }
 
-    
-
-    [SerializeField] Button nextLevelButton;
-    [SerializeField] Button restartButton;
-    [SerializeField] GameObject mainMenu;
-    [SerializeField] GameObject counter;
-    public TextMeshProUGUI scoreText;
-
-    [SerializeField] GameObject player;
-    private PlayerController playerController;
-    private ScoreCounter scoreCounterScript;
-    private Counter counterScript;
-    int charges = 3;
+    public int sessionScore = 0;
+    public int charges = 3;
+    public int goalCount = 0;
+    public int currentCount = 0;
+    public bool isVictory = false;
 
     void Awake()
     {
-        counterScript = counter.GetComponent<Counter>();
-        playerController = player.GetComponent<PlayerController>();
-        
-        SetLevelGoal(SceneManager.GetActiveScene().buildIndex);
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-        scoreCounterScript = GameObject.Find("ScoreCounter").GetComponent<ScoreCounter>();
-        //scoreCounterScript.AddScore(0, 0, 0);
-
-
-
+        SetLevelParameters();
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void SetLevelParameters()
     {
-        
-        /*LevelParameters.Add(1, 3);
-        LevelParameters.Add(2, 4);
-        LevelParameters.Add(3, 5);*/
+        levelCharges.Add(0);
+        levelCharges.Add(3);
+        levelCharges.Add(4);
+        levelCharges.Add(5);
+
+        levelGoal.Add(0);
+        levelGoal.Add(3);
+        levelGoal.Add(4);
+        levelGoal.Add(3);
     }
 
-
-    private void Update()
+    public void SetChargesForLevel()
     {
-        // open main menu
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            mainMenu.SetActive(!mainMenu.activeSelf);
-        }
+        charges = levelCharges[SceneManager.GetActiveScene().buildIndex];
     }
-
-
-    void ShowRestartButton()
+    public void SetGoalForLevel()
     {
-        if (counterScript.count < counterScript.levelGoal && charges == 0)
-        {
-            ActivateUI("RestartButton", true);
-        }
-    }
-
-    void ShowNextLevelButton()
-    {
-        if (counterScript.count >= counterScript.levelGoal)
-        {
-            //If goal reached, let change lvl
-            ActivateUI("NextLevelButton", true);
-            ActivateUI("RestartButton", false);
-        }
-    }
-
-
-    // buttons callout
-    public void ResetCurrentLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void OpenNewLevel(int levelIndex)
-    {
-       // scoreCounterScript.AddScore(counterScript.count, starGatheringScript.gathered, playerController.charges, false);
-
-        if (SceneManager.GetActiveScene().buildIndex + 1 != SceneManager.sceneCountInBuildSettings)
-        {
-            // start next level
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
-
-
-
-    public void ActivateUI(string objectName, bool value)
-    {
-        
-        if (objectName == "NextLevelButton")
-        {
-            nextLevelButton.gameObject.SetActive(value);
-        }
-        else if (objectName == "RestartButton")
-        {
-            restartButton.gameObject.SetActive(value);
-        }
-    }
-
-    public int GetAmountOfCharges()
-    {
-        int charges = 0;
-
-
-
-        return charges;
-    }
-
-    private void SetLevelGoal(int levelIndex)
-    {
-        if (levelIndex == 1)
-        {
-            counterScript.levelGoal = 3;
-            playerController.charges = 3;
-        }
-        else if (levelIndex == 2)
-        {
-            counterScript.levelGoal = 4;
-            playerController.charges = 4;
-        }
-        else if (levelIndex == 3)
-        {
-            counterScript.levelGoal = 3;
-            playerController.charges = 5;
-        }
-
-        counterScript.UpdateText();
+        goalCount = levelGoal[SceneManager.GetActiveScene().buildIndex];
     }
 }
+
 
 
